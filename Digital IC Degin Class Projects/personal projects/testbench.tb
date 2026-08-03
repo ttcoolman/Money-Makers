@@ -1,0 +1,28 @@
+
+
+// This dicates the clock periods 
+// delays are in microseconds and the simulator precision in nanoseconds
+// The clock toggles every 5 milliseconds
+
+
+
+`timescale 1ns/1ps 
+
+
+module test;
+
+reg clk;
+
+initial begin 
+
+    clk = 0 ; 
+
+    #5 clk = 1;
+
+
+    #2 clk = 0;
+
+end 
+
+
+endmodule 
