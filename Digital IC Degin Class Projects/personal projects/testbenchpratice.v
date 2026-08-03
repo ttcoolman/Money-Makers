@@ -1,4 +1,4 @@
-//Basic Testbench 
+//Basic Verilog
 
 
 module and_gate(
@@ -12,10 +12,7 @@ module and_gate(
 
 );
 
-
-
 assign y = a & b;
-
 
 
 endmodule 

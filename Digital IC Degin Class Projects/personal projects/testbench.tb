@@ -1,28 +1,74 @@
-
-
-// This dicates the clock periods 
-// delays are in microseconds and the simulator precision in nanoseconds
-// The clock toggles every 5 milliseconds
-
-
-
-`timescale 1ns/1ps 
-
-
 module test;
 
-reg clk;
+reg a;
+reg b;
+wire y;
+
+
+and_gate dut (
+.a(a),
+.b(b),
+.y(y)
+
+
+);
+
+
+//Create waveform 
 
 initial begin 
+        $dumpfile("dump.vcd");
+        $dumpvars(0,test);
+end 
 
-    clk = 0 ; 
 
-    #5 clk = 1;
+//Test inputs 
+
+initial begin
 
 
-    #2 clk = 0;
+a = 0;
+b = 0;
+
+#10;
+
+a = 0;
+b = 1;
+
+#10;
+
+a = 1;
+b = 0;
+
+#10;
+
+a = 1;
+b = 1;
+
+#10;
+
+
+$finish;
+
+
 
 end 
 
 
-endmodule 
+//Print results 
+
+
+// Create a main 
+initial begin 
+
+    $monitor(
+
+        "Time = %0t a = %b b = %b y= %b",
+        $time, a, b, y 
+      
+
+               );
+
+    end 
+
+    endmodule
