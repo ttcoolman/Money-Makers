@@ -1,0 +1,4 @@
+Running: xsim.dir/ee201_debounce_DPB_SCEN_CCEN_MCEN_tb_behav/xsimk.exe -simmode gui -wdb ee201_debounce_DPB_SCEN_CCEN_MCEN_tb_behav.wdb -simrunnum 0 -socket 53658
+Design successfully loaded
+Design Loading Memory Usage: 10792 KB (Peak: 10792 KB)
+Design Loading CPU Usage: 15 ms

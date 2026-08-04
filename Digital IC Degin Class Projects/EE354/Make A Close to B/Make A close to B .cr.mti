@@ -1,0 +1,15 @@
+{E:/Vivado/Projects/Make A Close to B/make_A_close_to_B.v} {1 {vlog -work work -vopt -stats=none {E:/Vivado/Projects/Make A Close to B/make_A_close_to_B.v}
+QuestaSim-64 vlog 10.4c Compiler 2015.07 Jul 20 2015
+-- Compiling module make_A_close_to_B
+
+Top level modules:
+	make_A_close_to_B
+
+} {} {}} {E:/Vivado/Projects/Make A Close to B/make_A_close_to_B_tb.v} {1 {vlog -work work -vopt -stats=none {E:/Vivado/Projects/Make A Close to B/make_A_close_to_B_tb.v}
+QuestaSim-64 vlog 10.4c Compiler 2015.07 Jul 20 2015
+-- Compiling module make_A_close_to_B_tb
+
+Top level modules:
+	make_A_close_to_B_tb
+
+} {} {}}

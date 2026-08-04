@@ -1,0 +1,8 @@
+0.7
+2020.2
+May 22 2025
+00:13:55
+E:/Vivado/Projects/ee354_single_step_N4_A7/ee354_single_step_N4_A7/ee354_divider_with_single-step/sources/divider_combined_cu_dpu_with_single_step.v,1758846381,verilog,,E:/Vivado/Projects/ee354_single_step_N4_A7/ee354_single_step_N4_A7/ee354_divider_with_single-step/sources/ee201_debounce_DPB_SCEN_CCEN_MCEN.v,,divider,,,../../../../../../../../../2025.1/Vivado/data/rsb/busdef,,,,,
+E:/Vivado/Projects/ee354_single_step_N4_A7/ee354_single_step_N4_A7/ee354_divider_with_single-step/sources/divider_top_with_single_step_A7.v,1758849640,verilog,,,,divider_top,,,../../../../../../../../../2025.1/Vivado/data/rsb/busdef,,,,,
+E:/Vivado/Projects/ee354_single_step_N4_A7/ee354_single_step_N4_A7/ee354_divider_with_single-step/sources/ee201_debounce_DPB_SCEN_CCEN_MCEN.v,1758846381,verilog,,E:/Vivado/Projects/ee354_single_step_N4_A7/ee354_single_step_N4_A7/ee354_divider_with_single-step/sources/divider_top_with_single_step_A7.v,,ee201_debouncer,,,../../../../../../../../../2025.1/Vivado/data/rsb/busdef,,,,,
+E:/Vivado/Projects/ee354_single_step_N4_A7/ee354_single_step_N4_A7/ee354_divider_with_single-step/sources/single step.sim/sim_1/behav/xsim/glbl.v,1741209010,verilog,,,,glbl,,,,,,,,

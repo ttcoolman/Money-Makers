@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Projects/ee354L_GCD_N4_A7/ee354L_GCD_N4_A7/ee354L_GCD_A7/ee354_GCD.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ee354_GCD
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Projects/ee354L_GCD_N4_A7/ee354L_GCD_N4_A7/ee354L_GCD_A7/ee354_GCD_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ee354_GCD_SCEN_tb_v
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Projects/ee354L_GCD_N4_A7/ee354L_GCD_N4_A7/ee354L_GCD_A7/GCD/GCD.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Wed Oct 22 18:29:12 2025
+# Process ID         : 33660
+# Current directory  : E:/Vivado/Projects/Divider_Pico_N4_8bit_A7_supplement/Divider_Pico_N4_8bit/sources/8_bit_divider/8_bit_divider.runs/impl_1
+# Command line       : vivado.exe -log divider_8_top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source divider_8_top.tcl -notrace
+# Log file           : E:/Vivado/Projects/Divider_Pico_N4_8bit_A7_supplement/Divider_Pico_N4_8bit/sources/8_bit_divider/8_bit_divider.runs/impl_1/divider_8_top.vdi
+# Journal file       : E:/Vivado/Projects/Divider_Pico_N4_8bit_A7_supplement/Divider_Pico_N4_8bit/sources/8_bit_divider/8_bit_divider.runs/impl_1\vivado.jou
+# Running On         : TmacComputer
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26100
+# Processor Detail   : AMD Ryzen 7 6800H with Radeon Graphics         
+# CPU Frequency      : 3194 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16371 MB
+# Swap memory        : 16106 MB
+# Total Virtual      : 32477 MB
+# Available Virtual  : 10694 MB
+#-----------------------------------------------------------
+source divider_8_top.tcl -notrace

@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Projects/ee354_debounce_simulate/ee201_debounce_DPB_SCEN_CCEN_MCEN.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ee201_debouncer
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Projects/ee354_debounce_simulate/ee201_debounce_DPB_SCEN_CCEN_MCEN_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ee201_debounce_DPB_SCEN_CCEN_MCEN_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Projects/ee354_single_step_N4_A7/ee354_single_step_N4_A7/ee354_divider_with_single-step/sources/project_1.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

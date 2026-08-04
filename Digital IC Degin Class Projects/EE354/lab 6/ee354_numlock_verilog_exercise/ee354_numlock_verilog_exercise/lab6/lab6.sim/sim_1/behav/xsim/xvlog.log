@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Projects/lab 6/ee354_numlock_verilog_exercise/ee354_numlock_verilog_exercise/ee354_numlock_sm.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ee354_numlock_sm
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/Vivado/Projects/lab 6/ee354_numlock_verilog_exercise/ee354_numlock_verilog_exercise/ee354_numlock_sm_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ee354_numlock_sm_tb

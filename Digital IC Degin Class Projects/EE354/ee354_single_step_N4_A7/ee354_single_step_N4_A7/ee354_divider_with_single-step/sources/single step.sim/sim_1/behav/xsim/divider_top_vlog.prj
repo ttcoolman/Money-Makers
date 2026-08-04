@@ -1,0 +1,11 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../../../../2025.1/Vivado/data/rsb/busdef" \
+"../../../../divider_combined_cu_dpu_with_single_step.v" \
+"../../../../ee201_debounce_DPB_SCEN_CCEN_MCEN.v" \
+"../../../../divider_top_with_single_step_A7.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
