@@ -32,7 +32,8 @@ end
 
 //Intruction fetch 
 
-//Fetching the instructions opcode for the instruction decoder 
+//Fetching the instructions from the program counter putting them into the sram  
+//Fetch the third instruction 
 always_comb begin
 
 instruction = memory[address[5:2]];

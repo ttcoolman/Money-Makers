@@ -13,7 +13,7 @@ logic Branch;
 
 logic [2:0] ALUControl;
 
-
+//Create a instance 
 control_unit dut (
 
 .opcode(opcode),
