@@ -1,16 +1,16 @@
 module control_unit(
-input logic [6:0]opcode;
-input logic [2:0]funct3;
-input logic [6:0]funct7;
+input logic [6:0]opcode,
+input logic [2:0]funct3,
+input logic [6:0]funct7,
 
 
-output logic RegWrite;
-output logic ALUSrc;
-output logic MemRead;
-output logic MemWrite;
-output logic Branch;
-output logic [2:0] ALUControl;
-output logic [2:0] ImmType;
+output logic RegWrite,
+output logic ALUSrc,
+output logic MemRead,
+output logic MemWrite,
+output logic Branch,
+output logic [2:0] ALUControl,
+output logic [2:0] ImmType
 
 
 );

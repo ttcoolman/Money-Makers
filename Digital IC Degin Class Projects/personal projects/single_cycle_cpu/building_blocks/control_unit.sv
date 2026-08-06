@@ -13,6 +13,9 @@ output logic [2:0] ALUControl
 
 );
 
+
+
+
 //The Control Unit acts as a decoder 
 
 

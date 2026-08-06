@@ -17,7 +17,7 @@ input logic reg_write,
 
 
 // Outputs 
-
+//2 Read Port 
 output logic [31:0] read_data1,
 output logic [31:0] read_data2
 
@@ -84,8 +84,3 @@ endmodule
 
 
 
-
-
-
-
-end
