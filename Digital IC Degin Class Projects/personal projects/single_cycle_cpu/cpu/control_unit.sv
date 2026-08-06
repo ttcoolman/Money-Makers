@@ -50,12 +50,12 @@ ALU_Control = 3'b001;
 
 end 
 
-//AND Iinstruction 
+//AND Instruction 
 else if ((funct3 == 3'b111) && (funct7 == 7'b0000000))
 begin
 ALU_Control = 3'b010;
-
 end
+
 //OR Instruction 
 
 else if ((funct7 == 7'b0000000) && (funct3 == 3'b110))
