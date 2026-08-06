@@ -3,13 +3,12 @@
 
 module program_counter_tb();
 
-input logic clk;
-input logic enable;
-input logic reset;
+ logic clk;
+ logic enable;
+ logic reset;
 
 
-
-output logic [31:0]address;
+ logic [31:0]address;
 
 
 
@@ -18,7 +17,7 @@ program_counter dut (
 .clk(clk),
 .enable(enable),
 .reset(reset),
-address(address)
+.address(address)
 
 );
 
@@ -27,7 +26,7 @@ address(address)
 initial begin
 
 $dumpfile("program_counter.vcd");
-$dumpvars(0,program_counter);
+$dumpvars(0,program_counter_tb);
 
 end 
 

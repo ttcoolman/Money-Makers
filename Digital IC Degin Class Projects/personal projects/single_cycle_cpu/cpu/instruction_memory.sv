@@ -15,7 +15,7 @@ output logic  [31:0]instruction_memory
 
 
 //Creates a stack of words 
-logic output [31:0]memory  [0:15];
+logic [31:0] memory [0:15];
 
 
 

@@ -18,13 +18,13 @@ output logic [31:0]address
 
 
 
-always_ff@(posedge)begin
+always_ff@(posedge clk)begin
 
 if(reset)
 
 begin
 
-address = 32'h00000000;
+address <= 32'h00000000;
 
 
 end 
