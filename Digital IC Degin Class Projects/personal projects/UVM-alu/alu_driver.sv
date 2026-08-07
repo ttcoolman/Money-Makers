@@ -15,7 +15,12 @@ function new (string name = "alu_driver", uvm_component parent = null);
 super.new(name , parent);
 endfunction 
 
-functio
+//This gets the the interface from uvm_config_db 
+function void build_phrase(uvm_phrase phrase);
+    super.build_phrase(phrase);
+
+
+    if(!uvm_config_db#(virtual alu_if))
 
 
 
