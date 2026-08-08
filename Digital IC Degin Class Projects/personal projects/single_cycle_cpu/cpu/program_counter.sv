@@ -11,8 +11,6 @@ output logic [31:0]address
 
 
 
-
-
 );
 
 
@@ -36,7 +34,7 @@ begin
 if(enable)
 begin
 
-    address = address + 32'd4;
+    address <= address + 32'd4;
 
 end 
 

@@ -1,7 +1,7 @@
 module immediate_generator(
 input logic [31:0]instruction,
 //Imm-type is determined by the type of instruction
-output logic [2:0]imm_type,
+input logic [2:0]imm_type,
 output logic [31:0]immediate
 
 );
@@ -29,7 +29,7 @@ case(imm_type)
 // B-Type : BEQ 
     3'b010: begin
 
-        immediate = {18{instruction[31]}, instruction[7], instruction[30:25], instruction[11:8], 0};
+        immediate = {18{instruction[31]}, instruction[7], instruction[30:25], instruction[11:8], 1'b0};
 
 
     end 
@@ -37,6 +37,8 @@ case(imm_type)
 endcase 
 
 end
+
+endmodule
 
     
 

@@ -43,3 +43,5 @@ always_comb begin
 instruction_memory = memory [address[5:2]];
 
 end 
+
+endmodule 

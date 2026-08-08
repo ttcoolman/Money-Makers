@@ -1,9 +1,12 @@
-input logic Branch;
-input logic Zero;
 
-output logic branch_taken;
+module branch(
 
+input logic Branch,
+input logic Zero,
 
+output logic branch_taken
+
+);
 always_comb begin
 
 

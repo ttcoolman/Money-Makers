@@ -73,8 +73,8 @@ $monitor(
     "Time = %0t Address = %h Instruction = %h ",
 
     $time,
-    $address,
-    $instruction
+    address,
+    instruction
     
     
     );

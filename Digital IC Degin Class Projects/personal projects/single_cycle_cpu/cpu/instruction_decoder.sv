@@ -1,7 +1,7 @@
 module instruction_decoder(
 
 input logic [31:0]address, 
-output logic [7:0] opcode,
+output logic [6:0] opcode,
 output logic [4:0]rd,
 output logic [4:0]rs1,
 output logic [4:0]rs2,
@@ -25,7 +25,7 @@ rd = instruction[11:7];
 funct3 = instruction[14:12];
 rs1 = instruction[19:15] ;
 rs2 = instruction [24:20] ;
-func7 = instruction [31:25];
+funct7 = instruction [31:25];
 
 
 

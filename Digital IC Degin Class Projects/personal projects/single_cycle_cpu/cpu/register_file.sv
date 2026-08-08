@@ -7,14 +7,15 @@ input logic [4:0]rd,
 input logic reg_write,
 input logic [31:0] write_data,
 
-input logic [31:0] registers [31:0],
+logic [31:0] registers [31:0],
 
+//Addresses of where the data is going to be read from 
 input logic [4:0]rs1,
 input logic [4:0]rs2,
 
 
-output logic [4:0] read_data1,
-output logic [4:0] read_data2
+output logic [31:0] read_data1,
+output logic [31:0] read_data2
 
 
 
