@@ -8,7 +8,7 @@ alu dut (
 .B(alu_interface.B),
 
 
-.ALUControl(alu_interface.ALUContol),
+.ALUControl(alu_interface.ALU_Control),
 
 .Result(alu_interface.Result)
 
