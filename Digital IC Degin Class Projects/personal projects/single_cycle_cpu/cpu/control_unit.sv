@@ -119,6 +119,9 @@ ImmType = 3'b010;
 
 end 
 
+
 endcase 
 
+
+end 
 endmodule 

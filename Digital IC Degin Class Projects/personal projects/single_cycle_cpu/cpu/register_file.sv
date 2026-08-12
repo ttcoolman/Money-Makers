@@ -7,7 +7,7 @@ input logic [4:0]rd,
 input logic reg_write,
 input logic [31:0] write_data,
 
-logic [31:0] registers [31:0],
+
 
 //Addresses of where the data is going to be read from 
 input logic [4:0]rs1,
@@ -18,14 +18,10 @@ output logic [31:0] read_data1,
 output logic [31:0] read_data2
 
 
-
-
-
-
 );
 
 //Initalize registers 
-
+logic [31:0] registers [31:0],
 
 initial begin
 
