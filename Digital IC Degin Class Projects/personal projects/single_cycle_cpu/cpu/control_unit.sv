@@ -1,127 +1,115 @@
 module control_unit(
-input logic [6:0]opcode,
-input logic [2:0]funct3,
-input logic [6:0]funct7,
 
+    input logic [6:0] opcode,
+    input logic [2:0] funct3,
+    input logic [6:0] funct7,
 
-output logic RegWrite,
-output logic ALUSrc,
-output logic MemRead,
-output logic MemWrite,
-output logic Branch,
-output logic [2:0] ALUControl,
-output logic [2:0] ImmType
-
+    output logic RegWrite,
+    output logic ALUSrc,
+    output logic MemRead,
+    output logic MemWrite,
+    output logic Branch,
+    output logic [2:0] ALUControl,
+    output logic [2:0] ImmType
 
 );
 
-//Intialize the Control Signals 
+    always_comb begin
 
-always_comb begin
-RegWrite = 0;
-ALUSrc = 0;
-MemRead = 0;
-MemWrite = 0;
-Branch = 0;
-//Determines whether we use the immediate or a register value for the second input for the ALU 
-ALUControl = 3'b000;
+        // Default control values
+        RegWrite   = 1'b0;
+        ALUSrc     = 1'b0;
+        MemRead    = 1'b0;
+        MemWrite   = 1'b0;
+        Branch     = 1'b0;
+        ALUControl = 3'b000;
+        ImmType    = 3'b000;
 
-// ADD 
-case(opcode)
+        case (opcode)
 
-//Each instruction is going to generate the Imm Type for immediate generator
+            // R-Type
+            7'b0110011: begin
 
-// R-Type Instruction 
-7'b0110011:
+                RegWrite = 1'b1;
+                ALUSrc   = 1'b0;
 
-begin
-//Using a register as ALU Second Input 
-ALUSrc = 0;
-RegWrite = 1;
+                // ADD
+                if ((funct7 == 7'b0000000) && (funct3 == 3'b000))
+                    ALUControl = 3'b000;
 
-if((funct7 == 7'b0000000) && (funct3 == 3'b000))
-begin
-//ADD Instruction 
-ALUControl = 3'b000;
-end 
+                // SUB
+                else if ((funct7 == 7'b0100000) && (funct3 == 3'b000))
+                    ALUControl = 3'b001;
 
-//SUB Instruction 
-else if((funct3 == 3'b000) && (funct7 == 7'b0100000))
-begin
+                // AND
+                else if ((funct7 == 7'b0000000) && (funct3 == 3'b111))
+                    ALUControl = 3'b010;
 
-ALUControl = 3'b001;
+                // OR
+                else if ((funct7 == 7'b0000000) && (funct3 == 3'b110))
+                    ALUControl = 3'b011;
 
-end 
+                // SLT
+                else if ((funct7 == 7'b0000000) && (funct3 == 3'b010))
+                    ALUControl = 3'b100;
 
-//AND Instruction 
-else if ((funct3 == 3'b111) && (funct7 == 7'b0000000))
-begin
-ALUControl = 3'b010;
-end
+            end
 
-//OR Instruction 
+            // ADDI
+            7'b0010011: begin
 
-else if ((funct7 == 7'b0000000) && (funct3 == 3'b110))
-begin
+                RegWrite   = 1'b1;
+                ALUSrc     = 1'b1;
+                ALUControl = 3'b000;
+                ImmType    = 3'b000;
 
-ALUControl = 3'b011;
+            end
 
-end 
-//SLT Instruction 
+            // LW
+            7'b0000011: begin
 
-else if ((funct7 == 7'b0000000) && (funct3 == 3'b010))
-begin
+                RegWrite   = 1'b1;
+                ALUSrc     = 1'b1;
+                MemRead    = 1'b1;
+                ALUControl = 3'b000;
+                ImmType    = 3'b000;
 
-ALUControl = 3'b100;
-end 
+            end
 
+            // SW
+            7'b0100011: begin
 
-end 
-//Opcode for AddI
+                ALUSrc     = 1'b1;
+                MemWrite   = 1'b1;
+                ALUControl = 3'b000;
+                ImmType    = 3'b001;
 
-7'b0010011: 
+            end
 
-begin
+            // BEQ
+            7'b1100011: begin
 
-ALUSrc = 1;
-RegWrite = 1;
+                Branch     = 1'b1;
+                ALUSrc     = 1'b0;
+                ALUControl = 3'b001;
+                ImmType    = 3'b010;
 
-ImmType = 3'b000;
+            end
 
-end 
-//Opcode for LW 
-7'b0000011:
+            default: begin
 
-begin
+                RegWrite   = 1'b0;
+                ALUSrc     = 1'b0;
+                MemRead    = 1'b0;
+                MemWrite   = 1'b0;
+                Branch     = 1'b0;
+                ALUControl = 3'b000;
+                ImmType    = 3'b000;
 
-MemRead = 1;
-RegWrite = 1;
-ALUSrc = 1;
-ALUControl = 3'b000;
-ImmType = 3'b000;
+            end
 
-end 
-//Opcode for SW 
-7'b0100011:
-begin
-MemWrite = 1;
-ALUSrc = 1;
-ImmType = 3'b001;
+        endcase
 
-end 
+    end
 
-
-//Opcode for Branch 
-7'b1100011:
-begin
-Branch = 1;
-ImmType = 3'b010;
-
-end 
-
-
-endcase 
-
-
-end 
-endmodule 
+endmodule

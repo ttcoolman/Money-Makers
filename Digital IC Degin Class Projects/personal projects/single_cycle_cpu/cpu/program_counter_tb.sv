@@ -4,7 +4,6 @@
 module program_counter_tb();
 
  logic clk;
- logic enable;
  logic reset;
 
 

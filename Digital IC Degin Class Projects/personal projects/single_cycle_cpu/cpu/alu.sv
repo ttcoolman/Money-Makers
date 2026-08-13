@@ -1,81 +1,49 @@
 module alu(
-input logic [31:0] a,
-input logic [31:0] b,
-input logic [31:0] ALUControl,
 
-output logic Zero, 
+    input logic [31:0] a,
+    input logic [31:0] b,
+    input logic [2:0] ALUControl,
 
-output logic [31:0] ALU_Result
-
-
-
-
+    output logic Zero,
+    output logic [31:0] ALU_Result
 
 );
 
+    always_comb begin
 
+        // Default values
+        ALU_Result = 32'b0;
 
-always_comb begin
+        case (ALUControl)
 
-case(ALU_Control)
+            // ADD
+            3'b000:
+                ALU_Result = a + b;
 
+            // SUB
+            3'b001:
+                ALU_Result = a - b;
 
-// ADD 
-3'b000: 
-ALU_Result = a + b;
+            // AND
+            3'b010:
+                ALU_Result = a & b;
 
-// SUB 
-3'b001:
-begin
-ALU_Result = a - b;
+            // OR
+            3'b011:
+                ALU_Result = a | b;
 
+            // SLT
+            3'b100:
+                ALU_Result = ($signed(a) < $signed(b)) ? 32'd1 : 32'd0;
 
-if( ALU_Result == 0)
+            default:
+                ALU_Result = 32'b0;
 
-    begin
-    Zero = 1; 
+        endcase
 
-    end 
+        // Zero is true whenever the ALU result is zero
+        Zero = (ALU_Result == 32'b0);
 
-
-end
-// AND 
-3'b010 :
-ALU_Result = a & b;
-
-// OR 
-
-3'b011 :
-ALU_Result = a | b;
-
-
-// SLT
-
-3'b100 :
-
-if(a < b)
-
-begin
-
-ALU_Result = 1;
-
-
-end
-
-else 
-
-begin
-
-ALU_Result = 0;
-
-end 
-
-endcase 
-
-end
+    end
 
 endmodule
-
-
-
-
