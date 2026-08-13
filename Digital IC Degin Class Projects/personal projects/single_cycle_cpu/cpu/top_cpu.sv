@@ -13,6 +13,7 @@ module cpu_top(
     logic [31:0] pc;
     logic [31:0] pc_plus4;
     logic [31:0] Branch_Address;
+    logic Zero ; 
     logic [31:0] next_pc;
 
     logic [31:0] instruction;
@@ -61,7 +62,8 @@ module cpu_top(
 pc_mux u_pc_mux (
 .Branch_address(Branch_Address),
 .pc_plus4(pc_plus4),
-.Branch(Branch),
+.Branch(BranchTaken),
+.Zero(Zero) , 
 .next_address(next_pc)
 );
 
@@ -86,7 +88,7 @@ pc u_pc (
 instruction_memory top(
 
 
-.address(next_pc),
+.address(pc),
 
 .instruction_memory(instruction)
 
@@ -96,7 +98,7 @@ instruction_memory top(
 
 instruction_decoder u_decoder  (
 
-.address(instruction), 
+.instruction(instruction), 
 .opcode(opcode),
 .rd(rd) , 
 .rs1(rs1),
@@ -114,11 +116,11 @@ control_unit u_control_unit (
 .funct3(funct3),
 .funct7(funct7),
 .RegWrite(RegWrite),
-.ALUSrc(ALU_Src),
+.ALUSrc(ALUSrc),
 .MemRead(MemRead),
 .MemWrite(MemWrite),
 .Branch(Branch),
-.ALUControl(ALU_Control),
+.ALUControl(ALUControl),
 .ImmType(ImmType)
 );
 
@@ -129,7 +131,7 @@ register_file u_register_file (
 .clk(clk),
 .rd(rd),
 .reg_write(RegWrite),
-.write_data(instruction),
+.write_data(writeback_data),
 //Addresses of where the data is going to be read from 
 
 .rs1(rs1),
@@ -143,9 +145,10 @@ register_file u_register_file (
 
 alu u_alu (
 
-.a(rs1),
-.b(ALU_Src ? immediate : read_data2),
-.opcode(opcode),
+.a(read_data1),
+.b(ALUSrc ? immediate : read_data2),
+.ALUControl(ALUControl),
+.Zero(Zero),
 .ALU_Result(alu_result)
 
 );
@@ -155,12 +158,16 @@ data_memory u_data_memory (
 .clk(clk),
 .MemRead(MemRead),
 .MemWrite(MemWrite),
-.address(ALU_Result) ,
+.address(alu_result) ,
 .write_data(write_data),
 .read_data(read_data) ,
 
 
 );
+
+//WriteBack 
+//For your single-cycle RISC-V CPU, the write-back data needs to choose between: ALU Result or Data Memory Output for LW 
+assign writeback_data = MemRead ? data_mem_read : alu_result
 
 
 

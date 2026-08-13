@@ -1,6 +1,6 @@
 module instruction_decoder(
 
-input logic [31:0]address, 
+input logic [31:0]instruction, 
 output logic [6:0] opcode,
 output logic [4:0]rd,
 output logic [4:0]rs1,

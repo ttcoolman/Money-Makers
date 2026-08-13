@@ -21,7 +21,7 @@ output logic [31:0] read_data2
 );
 
 //Initalize registers 
-logic [31:0] registers [31:0],
+logic [31:0] registers [31:0];
 
 initial begin
 

@@ -1,10 +1,11 @@
 module alu(
-input logic [3:0] a,
-input logic [3:0] b,
-input logic [2:0] opcode,
+input logic [31:0] a,
+input logic [31:0] b,
+input logic [31:0] ALUControl,
 
+output logic Zero, 
 
-output logic [3:0] ALU_Result
+output logic [31:0] ALU_Result
 
 
 
@@ -16,7 +17,7 @@ output logic [3:0] ALU_Result
 
 always_comb begin
 
-case(opcode)
+case(ALU_Control)
 
 
 // ADD 
@@ -25,8 +26,19 @@ ALU_Result = a + b;
 
 // SUB 
 3'b001:
+begin
 ALU_Result = a - b;
 
+
+if( ALU_Result == 0)
+
+    begin
+    Zero = 1; 
+
+    end 
+
+
+end
 // AND 
 3'b010 :
 ALU_Result = a & b;

@@ -19,12 +19,12 @@ output logic [2:0] ImmType
 
 always_comb begin
 RegWrite = 0;
-ALU_Src = 0;
+ALUSrc = 0;
 MemRead = 0;
 MemWrite = 0;
 Branch = 0;
 //Determines whether we use the immediate or a register value for the second input for the ALU 
-ALU_Control = 3'b000;
+ALUControl = 3'b000;
 
 // ADD 
 case(opcode)
@@ -36,27 +36,27 @@ case(opcode)
 
 begin
 //Using a register as ALU Second Input 
-ALU_Src = 0;
+ALUSrc = 0;
 RegWrite = 1;
 
 if((funct7 == 7'b0000000) && (funct3 == 3'b000))
 begin
 //ADD Instruction 
-ALU_Control = 3'b000;
+ALUControl = 3'b000;
 end 
 
 //SUB Instruction 
 else if((funct3 == 3'b000) && (funct7 == 7'b0100000))
 begin
 
-ALU_Control = 3'b001;
+ALUControl = 3'b001;
 
 end 
 
 //AND Instruction 
 else if ((funct3 == 3'b111) && (funct7 == 7'b0000000))
 begin
-ALU_Control = 3'b010;
+ALUControl = 3'b010;
 end
 
 //OR Instruction 
@@ -64,7 +64,7 @@ end
 else if ((funct7 == 7'b0000000) && (funct3 == 3'b110))
 begin
 
-ALU_Control = 3'b011;
+ALUControl = 3'b011;
 
 end 
 //SLT Instruction 
@@ -72,7 +72,7 @@ end
 else if ((funct7 == 7'b0000000) && (funct3 == 3'b010))
 begin
 
-ALU_Control = 3'b100;
+ALUControl = 3'b100;
 end 
 
 
@@ -83,7 +83,7 @@ end
 
 begin
 
-ALU_Src = 1;
+ALUSrc = 1;
 RegWrite = 1;
 
 ImmType = 3'b000;
@@ -96,8 +96,8 @@ begin
 
 MemRead = 1;
 RegWrite = 1;
-ALU_Src = 1;
-ALU_Control = 3'b000;
+ALUSrc = 1;
+ALUControl = 3'b000;
 ImmType = 3'b000;
 
 end 
@@ -105,7 +105,7 @@ end
 7'b0100011:
 begin
 MemWrite = 1;
-ALU_Src = 1;
+ALUSrc = 1;
 ImmType = 3'b001;
 
 end 
