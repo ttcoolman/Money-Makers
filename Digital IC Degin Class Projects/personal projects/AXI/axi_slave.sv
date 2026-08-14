@@ -142,7 +142,27 @@ if (s_axi_wready && s_axi_wvalid)
 
     end 
 
+    // --------------------------------
+    // WRITE RESPONSE
+    // --------------------------------
+     if (s_axi_bvalid && s_axi_bready) begin
+                s_axi_bvalid <= 1'b0;
+            end
 
+  // --------------------------------
+  // READ ADDRESS
+  // --------------------------------
+            s_axi_arready <= 1'b1;
+
+            if (s_axi_arvalid && s_axi_arready) begin
+
+                s_axi_rdata <= mem[s_axi_araddr];
+                s_axi_rresp <= 2'b00; // OKAY
+                s_axi_rlast <= 1'b1;
+                s_axi_rvalid <= 1'b1;
+
+                s_axi_arready <= 1'b0;
+            end  
 
 
 
