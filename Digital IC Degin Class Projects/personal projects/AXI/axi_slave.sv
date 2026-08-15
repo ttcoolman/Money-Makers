@@ -15,7 +15,7 @@ parameter DATA_WIDTH = 32
     //Write address chanel: for the Master writing to the Slave 
 
     // Address where the master wants to write to 
-    input logic [ADDR_WIDTH - 1 : 0 ] s_axi_awddr,
+    input logic [ADDR_WIDTH - 1 : 0 ] s_axi_awaddr,
     // Valid Bit meaning: Master: "The address I'm giving you is valid "
     input logic  s_axi_awvalid,
     // Ready Bit meaning : Slave: "I'm ready to accept your write address" 
@@ -44,7 +44,7 @@ parameter DATA_WIDTH = 32
     // Beat response: Signaling that the beat was written successfully 
     output logic [1:0] s_axi_bresp,
     //Valid Bit: Slave Saying that the beat response is ready : (bresp) 
-    input  logic s_axi_bvalid,
+    output logic s_axi_bvalid,
     //Ready Bit: Master saying that "I am ready to hear your beat response (bresp) "
     input logic s_axi_bready,
 
@@ -54,7 +54,7 @@ parameter DATA_WIDTH = 32
     input logic [ADDR_WIDTH-1:0] s_axi_araddr,
     // Master tells slave: The address I want to read from is valid 
     input logic s_axi_arvalid,
-    // Slave saying I am ready to accept this request
+    // Slave saying he is ready to give the address
     output logic s_axi_arready, 
 
     //Read data channel 
@@ -70,7 +70,7 @@ parameter DATA_WIDTH = 32
     input  logic                   s_axi_rready
 
 );
-
+// Establish the RAM stick 
 logic [DATA_WIDTH - 1 : 0] mem [0: 255];
 
 logic [ADDR_WIDTH - 1 : 0] write_addr;
@@ -111,7 +111,7 @@ else begin
 // WRITE ADDRESS
 // --------------------------------
 //Slave is ready for the address from the master 
-s_axi_awready <= 1'b1
+s_axi_awready <= 1'b1 ;
 
 //If valid and ready write the address to the slave, and make sure the slave is not ready for another address
 if (s_axi_awvalid && s_axi_awready)
@@ -152,19 +152,28 @@ if (s_axi_wready && s_axi_wvalid)
   // --------------------------------
   // READ ADDRESS
   // --------------------------------
+        //The Master is ready to read the slave address 
             s_axi_arready <= 1'b1;
-
+    //If the Master is ready to read the address, and the Slave address is valid to read 
             if (s_axi_arvalid && s_axi_arready) begin
-
+            //Put the data from the slave to the master 
                 s_axi_rdata <= mem[s_axi_araddr];
                 s_axi_rresp <= 2'b00; // OKAY
                 s_axi_rlast <= 1'b1;
                 s_axi_rvalid <= 1'b1;
-
+            //The Master says he does not need data 
                 s_axi_arready <= 1'b0;
             end  
 
-
+ // --------------------------------
+ // READ DATA 
+ // --------------------------------
+    // Once the data transfer succeeds, the master says he does not need the data, however the slave should not dicatate the rready signal 
+    if(s_axi_rvalid & s_axi_rready)
+    begin
+        s_axi_rvalid <= 1'b0;
+        s_axi_rlast <= 1'b0;
+    end 
 
 end
 
