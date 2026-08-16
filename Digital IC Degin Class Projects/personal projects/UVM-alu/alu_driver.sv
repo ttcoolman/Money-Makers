@@ -24,7 +24,7 @@ function void build_phrase(uvm_phrase phrase);
 //If can not get the interface, displays an error message 
     if(!uvm_config_db#(virtual alu_if))
         `uvm_fatal("DRV", "Could not get virtual interface vif")
-end 
+
 
 endfunction 
 

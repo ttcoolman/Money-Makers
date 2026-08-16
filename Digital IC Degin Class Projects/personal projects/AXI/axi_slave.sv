@@ -11,7 +11,6 @@ parameter DATA_WIDTH = 32
     input logic     aclk,
     input logic    aresetn,
 
-
     //Write address chanel: for the Master writing to the Slave 
 
     // Address where the master wants to write to 
@@ -41,7 +40,7 @@ parameter DATA_WIDTH = 32
 
     // Write response chanel 
 
-    // Beat response: Signaling that the beat was written successfully 
+    // Write response: tells the master whether the write transaction succeeded
     output logic [1:0] s_axi_bresp,
     //Valid Bit: Slave Saying that the beat response is ready : (bresp) 
     output logic s_axi_bvalid,
@@ -116,7 +115,8 @@ s_axi_awready <= 1'b1 ;
 //If valid and ready write the address to the slave, and make sure the slave is not ready for another address
 if (s_axi_awvalid && s_axi_awready)
 begin
-    write_addr <= s_axi_awddr;
+    
+    write_addr <= s_axi_awaddr;
     s_axi_awready <= 1'b0;
 
 
@@ -182,4 +182,4 @@ end
 
 end
 
-
+endmodule
